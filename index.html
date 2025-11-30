@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - Artur Valente, Storyteller</title>
+    <title>Portfólio - Rafaela Alves, Storyteller</title>
     <!-- Carrega o Tailwind CSS para estilização --><script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <!-- Font Awesome para ícones --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -129,41 +129,51 @@
 
         <!-- Barra de Navegação Superior (Minimalista, como na imagem) --><nav class="sticky top-0 z-20 bg-background-deep/90 backdrop-blur-sm px-6 py-4 border-b border-indigo-900/50">
             <div class="flex justify-between items-center max-w-6xl mx-auto">
-                <!-- Links de Navegação ajustados para mobile -->
+                <!-- Links de Navegação ajustados para mobile: Adicionado py-2 para touch target -->
                 <div class="flex items-center space-x-4 sm:space-x-6 overflow-x-auto whitespace-nowrap pb-1">
-                    <span class="text-xl font-bold text-primary-neon flex-shrink-0">AV</span>
-                    <a href="#sobre" class="text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Sobre</a>
-                    <a href="#projetos" class="text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Projetos</a>
-                    <a href="#habilidades" class="text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Habilidades</a>
-                    <a href="#depoimentos" class="text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Depoimentos</a>
-                    <a href="#contato" class="text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Contato</a>
+                    <span class="text-xl font-bold text-primary-neon flex-shrink-0">RA</span>
+                    <a href="#sobre" class="py-2 text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Sobre</a>
+                    <a href="#projetos" class="py-2 text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Projetos</a>
+                    <a href="#habilidades" class="py-2 text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Habilidades</a>
+                    <a href="#depoimentos" class="py-2 text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Depoimentos</a>
+                    <a href="#contato" class="py-2 text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Contato</a>
                 </div>
                 <button class="text-gray-400 hover:text-primary-neon transition duration-200 flex-shrink-0"><i class="fas fa-search"></i></button>
             </div>
         </nav>
 
-        <!-- Seção de Cabeçalho / Herói (Com o círculo AV) --><header id="main-header" class="relative z-10 pt-16 pb-24 section-reveal">
+        <!-- Seção de Cabeçalho / Herói (Com o círculo AV) --><header id="main-header" class="relative z-10 pt-10 sm:pt-16 pb-16 sm:pb-24 section-reveal">
             <div class="flex flex-col lg:flex-row items-center justify-between max-w-4xl mx-auto">
                 
-                <!-- Coluna de Texto e Botão (Tamanho do texto ajustado) -->
-                <div class="text-left lg:w-1/2 mb-10 lg:mb-0">
+                <!-- 1. Textos (H1/H2) - Ordem 1 em mobile/desktop. Usa flex para alinhar o texto no centro do mobile, e à esquerda no desktop. -->
+                <div class="text-center lg:text-left lg:w-1/2 lg:mb-0 order-1 lg:order-1 flex flex-col items-center lg:items-start">
                     <h1 class="text-5xl sm:text-6xl font-extrabold text-white mb-2 leading-tight tracking-wide">
-                        Artur Valente
+                        Rafaela Alves
                     </h1>
                     <h2 class="text-xl sm:text-2xl font-medium text-primary-neon tracking-wider uppercase mb-8">
                         Storyteller Digital & Diretor Criativo
                     </h2>
                     
-                    <!-- Botão Principal ATUALIZADO com o Neon Look -->
+                    <!-- Botão de Desktop (Visível apenas em LG+) -->
+                    <div class="hidden lg:block">
+                        <a href="#contato" class="inline-block py-3.5 px-8 bg-primary-neon text-white font-extrabold rounded-lg transition duration-300 shadow-xl shadow-indigo-900/50 btn-neon-pulse">
+                            FALE COMIGO AGORA <i class="fas fa-hand-point-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. Círculo AV (Profile Photo) - Ordem 2 em mobile/desktop. -->
+                <div class="av-circle flex-shrink-0 mb-10 lg:mb-0 order-2 lg:order-2">
+                    <span class="av-text">RA</span>
+                </div>
+                
+                <!-- 3. Botão de Mobile (Visível apenas em Mobile) - Ordem 3, garantindo que ele venha após o círculo AV. -->
+                <div class="w-full flex justify-center order-3 lg:hidden">
                     <a href="#contato" class="inline-block py-3.5 px-8 bg-primary-neon text-white font-extrabold rounded-lg transition duration-300 shadow-xl shadow-indigo-900/50 btn-neon-pulse">
                         FALE COMIGO AGORA <i class="fas fa-hand-point-right ml-2"></i>
                     </a>
                 </div>
-
-                <!-- Círculo AV com Brilho Neon (Elemento Central da Imagem) -->
-                <div class="av-circle flex-shrink-0">
-                    <span class="av-text">AV</span>
-                </div>
+                
             </div>
         </header>
 
@@ -375,7 +385,7 @@
             <div class="flex justify-center md:justify-start space-x-10">
                 
                 <!-- Ícone 1: Email -->
-                <a href="mailto:artur.valente@emailficticio.com" class="text-primary-neon hover:text-white transition duration-200 transform hover:scale-110 neon-glow-subtle rounded-full p-2">
+                <a href="mailto:rafaela.alves@emailficticio.com" class="text-primary-neon hover:text-white transition duration-200 transform hover:scale-110 neon-glow-subtle rounded-full p-2">
                     <i class="fas fa-envelope fa-2x"></i>
                     <span class="sr-only">Email</span>
                 </a>
@@ -399,7 +409,7 @@
 
 
         <!-- Rodapé --><footer class="text-center py-8 text-gray-600 text-sm mt-20">
-            <p>&copy; 2024 Artur Valente Storytelling. Design inspirado em UI Neon.</p>
+            <p>&copy; 2024 Rafaela Alves Storytelling. Design inspirado em UI Neon.</p>
         </footer>
 
     </div>
