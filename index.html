@@ -4,412 +4,522 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio - Rafaela Alves, Storymaker</title>
-    <!-- Carrega o Tailwind CSS para estilização --><script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Font Awesome para ícones --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Carrega o Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <style>
-        /* Configuração de fonte e cores de tema (Tema Escuro com Indigo Brilhante Neon) */
         :root {
-            --primary-neon: #818CF8; /* Indigo 400 */
-            --primary-dark: #6366F1; /* Indigo 500 */
-            --background-deep: #100D28; /* Fundo muito escuro */
-            --card-bg: #1A1637; /* Fundo dos cards */
-            --text-light: #E0E7FF; /* Cor do texto principal */
+            --bg-dark: #050507;
+            --card-dark: #121214; 
+            --text-main: #FFFFFF;
+            --text-muted: #9CA3AF;
+            --accent-pink: #EC4899;
+            --accent-purple: #8B5CF6;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--background-deep);
-            color: var(--text-light);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
         }
 
-        /* Estilo para simular o brilho neon */
-        .neon-glow {
-            box-shadow: 0 0 10px var(--primary-neon), 0 0 20px var(--primary-neon), inset 0 0 10px var(--primary-neon);
-            transition: all 0.3s ease-in-out;
+        /* Fundo com gradientes sutis */
+        .bg-glow-purple {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(5, 5, 7, 0) 70%);
+            top: -20%;
+            right: -10%;
+            z-index: 0;
+            pointer-events: none;
         }
 
-        .neon-glow-subtle {
-            box-shadow: 0 0 5px rgba(129, 140, 248, 0.5), 0 0 10px rgba(129, 140, 248, 0.3);
-            transition: all 0.3s ease-in-out;
+        .bg-glow-pink {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, rgba(5, 5, 7, 0) 70%);
+            bottom: 10%;
+            left: -10%;
+            z-index: 0;
+            pointer-events: none;
         }
 
-        .card-glow:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9), 0 0 20px var(--primary-neon);
+        /* Texto Gradiente */
+        .text-gradient {
+            background: linear-gradient(90deg, #F472B6 0%, #A855F7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* ESTILO: Botão Principal com Pulso Neon */
-        .btn-neon-pulse {
-            transition: all 0.3s ease-in-out;
-        }
-        .btn-neon-pulse:hover {
-            box-shadow: 0 0 15px var(--primary-neon), 0 0 30px var(--primary-neon);
-            transform: scale(1.05);
-        }
-
-        /* Estilo específico para a imagem de perfil circular */
-        .profile-img-circle {
-            width: 280px; /* AUMENTADO em ~40% */
-            height: 280px; /* AUMENTADO em ~40% */
+        /* Anel Gradiente da Foto */
+        .gradient-ring {
+            background: linear-gradient(135deg, #F97316 0%, #EC4899 50%, #8B5CF6 100%);
+            padding: 4px;
             border-radius: 50%;
-            object-fit: cover; /* Garante que a imagem preencha o círculo sem distorção */
-            border: 2px solid var(--primary-neon);
-            box-shadow: 0 0 30px 10px var(--primary-neon), 0 0 60px 20px rgba(129, 140, 248, 0.7); /* SOMBRA AJUSTADA */
         }
 
-        .av-text { /* Mantido para a navegação, se for o caso */
-            font-size: 4rem;
-            font-weight: 800;
-            color: var(--text-light);
-            text-shadow: 0 0 5px var(--primary-neon), 0 0 10px var(--primary-neon);
+        /* Botões Hero */
+        .btn-primary {
+            background-color: white;
+            color: black;
+            font-weight: 700;
+            border-radius: 9999px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
         }
 
-        /* Animação de revelação mantida */
-        .section-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+            border-radius: 9999px;
+            transition: all 0.2s;
         }
-        .section-reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+        .btn-secondary:hover {
+            border-color: white;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Badge "Disponível" */
+        .badge-available {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #10B981;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* Navegação */
+        .nav-link {
+            color: #D1D5DB;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: white;
         }
         
-        /* Estilo para o Card da Galeria de Projetos */
-        .project-card {
-            background-color: var(--card-bg);
-            border: 1px solid rgba(129, 140, 248, 0.1);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s ease;
+        .nav-btn-contact {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 24px;
+            border-radius: 9999px;
+            transition: all 0.3s;
         }
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .nav-btn-contact:hover {
+            border-color: #EC4899;
+            color: #EC4899;
+        }
+
+        /* Card Flutuante (Stats) */
+        .floating-card {
+            background: rgba(20, 20, 25, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- ESTILOS SEÇÃO SERVIÇOS (O Que Eu Faço) --- */
+        .service-card {
+            background-color: var(--card-dark);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            border: 1px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: left; /* Alinhamento à esquerda conforme imagem */
+        }
+        
+        .service-card:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .service-icon-wrapper {
+            width: 3rem;
+            height: 3rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* --- ESTILOS GALERIA DE STORIES --- */
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .filter-btn.active {
+            background-color: white;
+            color: black;
+        }
+        .filter-btn.inactive {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #9CA3AF;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .filter-btn.inactive:hover {
+            border-color: white;
+            color: white;
+        }
+
+        .story-card {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            aspect-ratio: 9 / 16; /* Formato Story */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .story-card:hover {
+            transform: translateY(-5px);
+        }
+        .story-card img {
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(26, 22, 55, 0.0) 50%, rgba(129, 140, 248, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
-        .project-card:hover::before {
-            opacity: 1;
+        .story-card:hover img {
+            transform: scale(1.05);
         }
-        .project-card-content {
+        .story-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-            background: rgba(26, 22, 55, 0.8); /* Fundo semi-transparente */
-            backdrop-filter: blur(5px);
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.25rem;
         }
-        .project-card:hover .project-card-content {
-            transform: translateY(0);
+        
+        /* Badges dentro dos stories */
+        .story-badge {
+            display: inline-block;
+            background-color: rgba(236, 72, 153, 0.2); /* Pink tint */
+            color: #F472B6;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            margin-bottom: 0.5rem;
+            width: fit-content;
         }
-        .project-card-title {
-            color: var(--primary-neon);
-            text-shadow: 0 0 5px var(--primary-neon);
+        
+        .story-badge.purple {
+            background-color: rgba(139, 92, 246, 0.2);
+            color: #A78BFA;
+        }
+
+        /* --- INPUTS FORMULÁRIO --- */
+        .form-input {
+            width: 100%;
+            background-color: #121214;
+            border: 1px solid #27272A;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #EC4899;
+            box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.1);
+        }
+        .form-label {
+            display: block;
+            color: #71717A;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
-<body class="min-h-screen flex justify-center">
+<body class="relative">
 
-    <div class="w-full max-w-6xl space-y-20 p-4 sm:p-8">
+    <!-- Efeitos de Fundo -->
+    <div class="bg-glow-purple"></div>
+    <div class="bg-glow-pink"></div>
 
-        <!-- Barra de Navegação Superior (Minimalista, como na imagem) --><nav class="sticky top-0 z-20 bg-background-deep/90 backdrop-blur-sm px-6 py-4 border-b border-indigo-900/50">
-            <div class="flex justify-between items-center max-w-6xl mx-auto">
-                <!-- Links de Navegação ajustados para mobile: Adicionado py-2 para touch target --><div class="flex items-center space-x-4 sm:space-x-6 overflow-x-auto whitespace-nowrap pb-1">
-                    <span class="text-xl font-bold text-primary-neon flex-shrink-0">RA</span>
-                    <a href="#sobre" class="py-2 text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Sobre</a>
-                    <a href="#projetos" class="py-2 text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Projetos</a>
-                    <a href="#habilidades" class="py-2 text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Habilidades</a>
-                    <a href="#depoimentos" class="py-2 text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Depoimentos</a>
-                    <a href="#contato" class="py-2 text-gray-400 hover:text-primary-neon transition duration-200 text-xs sm:text-sm flex-shrink-0">Contato</a>
-                </div>
-                <button class="text-gray-400 hover:text-primary-neon transition duration-200 flex-shrink-0"><i class="fas fa-search"></i></button>
+    <div class="w-full max-w-7xl mx-auto px-6 sm:px-12 relative z-10">
+
+        <!-- Navbar (Agora Fixa) -->
+        <nav class="sticky top-0 z-50 bg-[#050507]/80 backdrop-blur-md border-b border-white/10 flex justify-between items-center py-4 mb-8 transition-all duration-300">
+            <div class="flex items-center gap-2">
+                <div class="text-pink-500 text-2xl"><i class="fas fa-vector-square"></i></div>
+                <span class="text-xl font-bold tracking-tight">Rafaela Alves</span>
             </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#sobre" class="nav-link text-sm">Sobre</a>
+                <a href="#portfolio" class="nav-link text-sm">Portfólio</a>
+                <a href="#servicos" class="nav-link text-sm">Serviços</a>
+                <a href="#contato" class="nav-btn-contact text-sm">Contato</a>
+            </div>
+            <button class="md:hidden text-white text-xl"><i class="fas fa-bars"></i></button>
         </nav>
 
-        <!-- Seção de Cabeçalho / Herói (Com a foto de perfil) --><header id="main-header" class="relative z-10 pt-10 sm:pt-16 pb-16 sm:pb-24 section-reveal">
-            <div class="flex flex-col lg:flex-row items-center justify-between max-w-4xl mx-auto">
-                
-                <!-- 1. Textos (H1/H2) - Ordem 1 em mobile/desktop. Usa flex para alinhar o texto no centro do mobile, e à esquerda no desktop. --><div class="text-center lg:text-left lg:w-1/2 lg:mb-0 order-1 lg:order-1 flex flex-col items-center lg:items-start">
-                    <h1 class="text-5xl sm:text-6xl font-extrabold text-white mb-2 leading-tight tracking-wide">
-                        Rafaela Alves
-                    </h1>
-                    <!-- TEXTO ALTERADO AQUI -->
-                    <h2 class="text-xl sm:text-2xl font-medium text-primary-neon tracking-wider uppercase mb-8">
-                        Storymaker & Videomaker
-                    </h2>
-                    
-                    <!-- Botão de Desktop (Visível apenas em LG+) --><div class="hidden lg:block">
-                        <a href="#contato" class="inline-block py-3.5 px-8 bg-primary-neon text-white font-extrabold rounded-lg transition duration-300 shadow-xl shadow-indigo-900/50 btn-neon-pulse">
-                            FALE COMIGO AGORA <i class="fas fa-hand-point-right ml-2"></i>
-                        </a>
-                    </div>
+        <!-- Hero Section -->
+        <header class="flex flex-col-reverse lg:flex-row items-center justify-between pt-10 pb-20 lg:pt-20 lg:pb-32 gap-12">
+            <div class="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div class="badge-available inline-flex items-center px-4 py-2 rounded-full mb-6 uppercase tracking-wider">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                    Disponível para projetos
                 </div>
-
-                <!-- 2. Imagem de Perfil (Profile Photo) - Ordem 2 em mobile/desktop. -->
-                <div class="flex-shrink-0 mb-10 lg:mb-0 order-2 lg:order-2">
-                    <!-- URL CORRIGIDA PARA O FORMATO RAW DO GITHUB -->
-                    <img class="profile-img-circle" src="https://raw.githubusercontent.com/contatolucasao-netizen/portfolio-rafa/fb6022364ee18465c292159787bc7fab4e015cce/Rafa.png" alt="Rafaela Alves - Perfil">
-                </div>
-                
-                <!-- 3. Botão de Mobile (Visível apenas em Mobile) - Ordem 3, garantindo que ele venha após a imagem de perfil. --><div class="w-full flex justify-center order-3 lg:hidden">
-                    <a href="#contato" class="inline-block py-3.5 px-8 bg-primary-neon text-white font-extrabold rounded-lg transition duration-300 shadow-xl shadow-indigo-900/50 btn-neon-pulse">
-                        FALE COMIGO AGORA <i class="fas fa-hand-point-right ml-2"></i>
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight mb-6">
+                    Transformando seguidores em <br>
+                    <span class="text-gradient">Fãs Leais.</span>
+                </h1>
+                <p class="text-gray-400 text-lg mb-10 max-w-lg leading-relaxed">
+                    Sou a Rafaela, storymaker profissional. Crio narrativas visuais imersivas que aumentam o engajamento e vendem o lifestyle da sua marca em 15 segundos.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                    <a href="#portfolio" class="btn-primary px-8 py-4 text-sm flex items-center justify-center gap-2">
+                        Ver Stories <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contato" class="btn-secondary px-8 py-4 text-sm flex items-center justify-center">
+                        Meus Pacotes
                     </a>
                 </div>
-                
+            </div>
+            <div class="lg:w-1/2 flex justify-center relative">
+                <div class="relative w-72 h-72 sm:w-96 sm:h-96">
+                    <div class="gradient-ring w-full h-full p-1 shadow-[0_0_50px_rgba(236,72,153,0.3)]">
+                        <img class="w-full h-full object-cover rounded-full border-4 border-[#050507]" 
+                             src="https://raw.githubusercontent.com/contatolucasao-netizen/portfolio-rafa/28712366008463cde5af7ea305c6ddd4ca9335e7/Rafa.png" 
+                             alt="Rafaela Alves">
+                    </div>
+                    <div class="floating-card absolute -bottom-4 -left-4 sm:bottom-4 sm:-left-8 px-5 py-4 rounded-2xl flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 font-medium">Views Médios</p>
+                            <p class="text-xl font-bold text-white">12.5k+</p>
+                        </div>
+                    </div>
+                    <div class="absolute -z-10 top-0 right-0 w-full h-full opacity-30">
+                        <div class="absolute top-10 right-0 w-32 h-1 bg-pink-500 transform rotate-45 blur-sm"></div>
+                        <div class="absolute bottom-20 left-10 w-40 h-1 bg-purple-500 transform -rotate-12 blur-sm"></div>
+                    </div>
+                </div>
             </div>
         </header>
 
-        <!-- Seção: Sobre Minha Jornada (Grid de Ícones) --><section id="sobre" class="section-reveal">
-            <h3 class="text-xl font-bold text-gray-400 mb-8 uppercase tracking-widest">Sobre Minha Jornada</h3>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                
-                <!-- Card 1 --><div class="bg-card-bg p-6 rounded-xl border border-indigo-900/50 card-glow flex flex-col items-start space-y-3">
-                    <span class="text-4xl text-primary-neon"><i class="fas fa-video"></i></span>
-                    <h4 class="font-bold text-white text-lg">Narrativa Audiovisual</h4>
-                    <p class="text-gray-400 text-sm">Especialista em roteiros e direção para cinema e documentários.</p>
-                </div>
-
-                <!-- Card 2 --><div class="bg-card-bg p-6 rounded-xl border border-indigo-900/50 card-glow flex flex-col items-start space-y-3">
-                    <span class="text-4xl text-primary-neon"><i class="fas fa-lightbulb"></i></span>
-                    <h4 class="font-bold text-white text-lg">Estratégia Criativa</h4>
-                    <p class="text-gray-400 text-sm">Transformando insights de mercado em campanhas de alto impacto.</p>
-                </div>
-
-                <!-- Card 3 --><div class="bg-card-bg p-6 rounded-xl border border-indigo-900/50 card-glow flex flex-col items-start space-y-3">
-                    <span class="text-4xl text-primary-neon"><i class="fas fa-layer-group"></i></span>
-                    <h4 class="font-bold text-white text-lg">Design Transmídia</h4>
-                    <p class="text-gray-400 text-sm">Integração de histórias em múltiplas plataformas digitais.</p>
-                </div>
-
-                <!-- Card 4 (Similar aos Depoimentos na imagem) --><div class="bg-card-bg p-6 rounded-xl border border-indigo-900/50 card-glow flex flex-col items-start space-y-3">
-                    <span class="text-4xl text-primary-neon"><i class="fas fa-globe"></i></span>
-                    <h4 class="font-bold text-white text-lg">Alcance Global</h4>
-                    <p class="text-gray-400 text-sm">Projetos desenvolvidos para audiências e mercados internacionais.</p>
-                </div>
+        <!-- Seção: O Que Eu Faço -->
+        <section class="py-20" id="servicos">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-3 text-white">O Que Eu Faço</h2>
+                <p class="text-gray-400 text-lg">Estratégias visuais para dominar o algoritmo.</p>
             </div>
-        </section>
-        
-        <!-- Seção de Habilidades Chave (Módulo de Cards Simples) --><section id="habilidades" class="section-reveal">
-            <h3 class="text-xl font-bold text-gray-400 mb-8 uppercase tracking-widest">Habilidades Chave</h3>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
-                <!-- Habilidade 1 --><div class="bg-card-bg p-5 rounded-xl border border-indigo-900/50 card-glow text-center">
-                    <span class="text-4xl text-primary-neon block mb-2"><i class="fas fa-pencil-ruler"></i></span>
-                    <h4 class="font-bold text-white text-md">Roteiro</h4>
-                </div>
-                
-                <!-- Habilidade 2 --><div class="bg-card-bg p-5 rounded-xl border border-indigo-900/50 card-glow text-center">
-                    <span class="text-4xl text-primary-neon block mb-2"><i class="fas fa-palette"></i></span>
-                    <h4 class="font-bold text-white text-md">Direção de Arte</h4>
-                </div>
-
-                <!-- Habilidade 3 --><div class="bg-card-bg p-5 rounded-xl border border-indigo-900/50 card-glow text-center">
-                    <span class="text-4xl text-primary-neon block mb-2"><i class="fas fa-sitemap"></i></span>
-                    <h4 class="font-bold text-white text-md">Transmídia</h4>
+                <!-- Card 1 -->
+                <div class="service-card group">
+                    <div class="service-icon-wrapper group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Cobertura de Eventos</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Cobertura em tempo real de lançamentos, festas e workshops. Edição rápida para postagem imediata com qualidade de cinema.
+                    </p>
                 </div>
 
-                <!-- Habilidade 4 --><div class="bg-card-bg p-5 rounded-xl border border-indigo-900/50 card-glow text-center">
-                    <span class="text-4xl text-primary-neon block mb-2"><i class="fas fa-bullhorn"></i></span>
-                    <h4 class="font-bold text-white text-md">Branding</h4>
+                <!-- Card 2 -->
+                <div class="service-card group">
+                    <div class="service-icon-wrapper group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                        <i class="far fa-circle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Identidade Visual para Stories</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Criação de templates, stickers e paleta de cores exclusiva para manter seus stories consistentes e reconhecíveis.
+                    </p>
                 </div>
 
-                <!-- Habilidade 5 --><div class="bg-card-bg p-5 rounded-xl border border-indigo-900/50 card-glow text-center">
-                    <span class="text-4xl text-primary-neon block mb-2"><i class="fas fa-magic"></i></span>
-                    <h4 class="font-bold text-white text-md">Pós-Produção</h4>
+                <!-- Card 3 -->
+                <div class="service-card group">
+                    <div class="service-icon-wrapper group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Roteiros de Vendas</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Sequências estratégicas de stories desenhadas para aquecer a audiência e converter seguidores em clientes.
+                    </p>
                 </div>
 
-                <!-- Habilidade 6 --><div class="bg-card-bg p-5 rounded-xl border border-indigo-900/50 card-glow text-center">
-                    <span class="text-4xl text-primary-neon block mb-2"><i class="fas fa-hand-holding-heart"></i></span>
-                    <h4 class="font-bold text-white text-md">Design Emocional</h4>
-                </div>
-
-                <!-- Habilidade 7 --><div class="bg-card-bg p-5 rounded-xl border border-indigo-900/50 card-glow text-center">
-                    <span class="text-4xl text-primary-neon block mb-2"><i class="fas fa-users"></i></span>
-                    <h4 class="font-bold text-white text-md">Liderança</h4>
-                </div>
-                
             </div>
         </section>
 
+        <!-- Galeria de Stories -->
+        <section class="py-10" id="portfolio">
+             
+             <!-- Header da Galeria -->
+             <div class="flex flex-col lg:flex-row justify-between items-end mb-12 gap-6">
+                 <div>
+                     <h2 class="text-4xl font-black mb-2 text-white">Galeria de Stories</h2>
+                     <p class="text-gray-400">Clique para visualizar a experiência imersiva.</p>
+                 </div>
+                 
+                 <!-- Filtros -->
+                 <div class="flex flex-wrap gap-3">
+                     <button class="filter-btn active">Todos</button>
+                     <button class="filter-btn inactive">Lifestyle</button>
+                     <button class="filter-btn inactive">Moda</button>
+                     <button class="filter-btn inactive">Gastronomia</button>
+                 </div>
+             </div>
 
-        <!-- Seção: Projetos em Destaque (Galeria Moderna) --><section id="projetos" class="section-reveal">
-            <h3 class="text-xl font-bold text-gray-400 mb-8 uppercase tracking-widest">Galeria de Projetos em Destaque</h3>
+             <!-- Grid de Projetos 9:16 -->
+             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                 
+                 <!-- Story 1 -->
+                 <div class="story-card group">
+                     <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Café">
+                     <div class="story-overlay">
+                         <span class="story-badge">Gastronomia</span>
+                         <h3 class="text-white font-bold text-sm">Morning moods ☕ #cafe #vibes</h3>
+                     </div>
+                 </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Projeto 1: Documentário --><div class="project-card rounded-xl shadow-xl border border-indigo-900/50 card-glow h-72">
-                    <img class="w-full h-full object-cover" 
-                         src="https://placehold.co/600x400/818CF8/1A1637?text=O+Legado+dos+Ventos" 
-                         alt="Capa do Projeto O Legado dos Ventos">
-                    <div class="project-card-content rounded-b-xl">
-                        <span class="text-xs font-semibold text-white bg-indigo-500 rounded-full px-3 py-1 mb-2 inline-block">Documentário</span>
-                        <h4 class="text-2xl font-bold project-card-title mb-1">Decupera Destinuge</h4>
-                        <p class="text-gray-300 text-sm mb-3 truncate">
-                            Longa-metragem explorando cultura e ativismo indígena na Amazônia.
-                        </p>
-                        <a href="#" class="text-sm font-medium text-white hover:text-primary-dark transition duration-200 flex items-center">Ver Case Study <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
-                    </div>
-                </div>
+                 <!-- Story 2 -->
+                 <div class="story-card group">
+                     <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Street Style">
+                     <div class="story-overlay">
+                         <span class="story-badge">Moda</span>
+                         <h3 class="text-white font-bold text-sm">Street style de hoje. Link na bio! 🔥</h3>
+                     </div>
+                 </div>
 
-                <!-- Projeto 2: Mídia Social --><div class="project-card rounded-xl shadow-xl border border-indigo-900/50 card-glow h-72">
-                    <img class="w-full h-full object-cover" 
-                         src="https://placehold.co/600x400/6366F1/1A1637?text=Campanha+Logística" 
-                         alt="Capa do Projeto Caminhos Conectados">
-                    <div class="project-card-content rounded-b-xl">
-                        <span class="text-xs font-semibold text-white bg-violet-500 rounded-full px-3 py-1 mb-2 inline-block">Mídia Social</span>
-                        <h4 class="text-2xl font-bold project-card-title mb-1">Dois Volumante</h4>
-                        <p class="text-gray-300 text-sm mb-3 truncate">
-                            Campanha interativa de startup de logística com grande aumento de engajamento orgânico.
-                        </p>
-                        <a href="#" class="text-sm font-medium text-white hover:text-primary-dark transition duration-200 flex items-center">Ver Case Study <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
-                    </div>
-                </div>
+                 <!-- Story 3 -->
+                 <div class="story-card group">
+                     <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Setup Tech">
+                     <div class="story-overlay">
+                         <span class="story-badge purple">Tech</span>
+                         <h3 class="text-white font-bold text-sm">Setup atualizado para editar os vlogs. 💻</h3>
+                     </div>
+                 </div>
 
-                <!-- Projeto 3: UX Narrativo --><div class="project-card rounded-xl shadow-xl border border-indigo-900/50 card-glow h-72">
-                    <img class="w-full h-full object-cover" 
-                         src="https://placehold.co/600x400/60A5FA/1A1637?text=UX+App" 
-                         alt="Capa do Projeto A Máquina do Tempo">
-                    <div class="project-card-content rounded-b-xl">
-                        <span class="text-xs font-semibold text-white bg-blue-500 rounded-full px-3 py-1 mb-2 inline-block">UX Design</span>
-                        <h4 class="text-2xl font-bold project-card-title mb-1">A Máquina do Tempo</h4>
-                        <p class="text-gray-300 text-sm mb-3 truncate">
-                            Design de experiência gamificado para aplicativo de história e cultura.
-                        </p>
-                        <a href="#" class="text-sm font-medium text-white hover:text-primary-dark transition duration-200 flex items-center">Ver Case Study <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
-                    </div>
-                </div>
+                 <!-- Story 4 -->
+                 <div class="story-card group">
+                     <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Avião">
+                     <div class="story-overlay">
+                         <span class="story-badge">Viagem</span>
+                         <h3 class="text-white font-bold text-sm">Próxima parada: Rio de Janeiro ✈️</h3>
+                     </div>
+                 </div>
 
-                <!-- Projeto 4: Branding --><div class="project-card rounded-xl shadow-xl border border-indigo-900/50 card-glow h-72">
-                    <img class="w-full h-full object-cover" 
-                         src="https://placehold.co/600x400/EC4899/1A1637?text=Branding+Sustentável" 
-                         alt="Capa do Projeto O Poder da Identidade">
-                    <div class="project-card-content rounded-b-xl">
-                        <span class="text-xs font-semibold text-white bg-pink-500 rounded-full px-3 py-1 mb-2 inline-block">Branding</span>
-                        <h4 class="text-2xl font-bold project-card-title mb-1">O Poder da Identidade</h4>
-                        <p class="text-gray-300 text-sm mb-3 truncate">
-                            Criação completa do Brand Story para marca de moda sustentável.
-                        </p>
-                        <a href="#" class="text-sm font-medium text-white hover:text-primary-dark transition duration-200 flex items-center">Ver Case Study <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
-                    </div>
-                </div>
+                 <!-- Story 5 -->
+                 <div class="story-card group">
+                     <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Trabalho Remoto">
+                     <div class="story-overlay">
+                         <span class="story-badge">Lifestyle</span>
+                         <h3 class="text-white font-bold text-sm">Rotina de trabalho remoto 💻✨</h3>
+                     </div>
+                 </div>
 
-                <!-- Projeto 5: Realidade Virtual --><div class="project-card rounded-xl shadow-xl border border-indigo-900/50 card-glow h-72">
-                    <img class="w-full h-full object-cover" 
-                         src="https://placehold.co/600x400/8B5CF6/1A1637?text=Experiência+VR" 
-                         alt="Capa do Projeto Mundo Submerso VR">
-                    <div class="project-card-content rounded-b-xl">
-                        <span class="text-xs font-semibold text-white bg-purple-500 rounded-full px-3 py-1 mb-2 inline-block">Realidade Virtual</span>
-                        <h4 class="text-2xl font-bold project-card-title mb-1">Mundo Submerso VR</h4>
-                        <p class="text-gray-300 text-sm mb-3 truncate">
-                            Criação de narrativa imersiva para experiência de realidade virtual educativa.
-                        </p>
-                        <a href="#" class="text-sm font-medium text-white hover:text-primary-dark transition duration-200 flex items-center">Ver Case Study <i class="fas fa-arrow-right ml-2 text-xs"></i></a>
-                    </div>
-                </div>
-                
-            </div>
-        </section>
-        
+                 <!-- Story 6 -->
+                 <div class="story-card group">
+                     <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Moda Outono">
+                     <div class="story-overlay">
+                         <span class="story-badge">Moda</span>
+                         <h3 class="text-white font-bold text-sm">Tendências de outono. Já conferiram? 🍂</h3>
+                     </div>
+                 </div>
 
-        <!-- Seção: Depoimentos (Estilo Citação/Avatar, como na imagem) --><section id="depoimentos" class="section-reveal">
-            <h3 class="text-xl font-bold text-gray-400 mb-8 uppercase tracking-widest">Depoimentos</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                
-                <!-- Depoimento 1 --><div class="bg-card-bg p-7 rounded-xl shadow-xl border border-indigo-900/50 card-glow relative">
-                    <span class="absolute top-0 right-0 text-7xl font-extrabold text-primary-neon opacity-10 leading-none">”</span>
-                    <p class="text-white text-lg mb-4 italic leading-relaxed">"Rafaela não apenas conta uma história; ela a transforma em uma experiência imersiva. Profissionalismo e criatividade em alta."</p>
-                    <div class="flex items-center mt-5">
-                        <img class="w-12 h-12 rounded-full mr-4 border-2 border-primary-neon object-cover" src="https://placehold.co/100x100/374151/FFFFFF?text=RS" alt="Avatar">
-                        <div>
-                            <p class="font-semibold text-white">Roberto Santos</p>
-                            <p class="text-sm text-gray-400">Diretor, Estúdio Íris</p>
-                        </div>
-                    </div>
-                </div>
+                 <!-- Story 7 -->
+                 <div class="story-card group">
+                     <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pizza">
+                     <div class="story-overlay">
+                         <span class="story-badge">Gastronomia</span>
+                         <h3 class="text-white font-bold text-sm">Noite de pizza caseira! 🍕😋</h3>
+                     </div>
+                 </div>
 
-                <!-- Depoimento 2 --><div class="bg-card-bg p-7 rounded-xl shadow-xl border border-indigo-900/50 card-glow relative">
-                    <span class="absolute top-0 right-0 text-7xl font-extrabold text-primary-neon opacity-10 leading-none">”</span>
-                    <p class="text-white text-lg mb-4 italic leading-relaxed">"A visão de Rafaela elevou nosso branding a um novo patamar de autenticidade. Uma verdadeira mestra na arte de cativar."</p>
-                    <div class="flex items-center mt-5">
-                        <img class="w-12 h-12 rounded-full mr-4 border-2 border-primary-neon object-cover" src="https://placehold.co/100x100/374151/FFFFFF?text=JP" alt="Avatar">
-                        <div>
-                            <p class="font-semibold text-white">Juliana Pires</p>
-                            <p class="text-sm text-gray-400">CMO, TechNova</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                 <!-- Story 8 -->
+                 <div class="story-card group">
+                     <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Praia">
+                     <div class="story-overlay">
+                         <span class="story-badge">Viagem</span>
+                         <h3 class="text-white font-bold text-sm">Saudades desse paraíso tropical 🌴🌊</h3>
+                     </div>
+                 </div>
+
+             </div>
         </section>
 
-        <!-- Seção: Contato/Social (Estilo Ícones Neon) --><section id="contato" class="section-reveal pt-10">
-            <h3 class="text-xl font-bold text-gray-400 mb-8 uppercase tracking-widest">Conecte-se</h3>
+        <!-- CTA / Contato Section (NOVA COM FUNDO MELHORADO) -->
+        <section id="contato" class="py-24 relative overflow-hidden">
+            <!-- Enhanced Background Elements -->
+            <div class="absolute inset-0 w-full h-full">
+                 <!-- Main bottom glow - Centralizado e com largura contida para evitar corte nas bordas -->
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-[500px] bg-gradient-to-t from-purple-900/30 via-pink-900/10 to-transparent pointer-events-none blur-[120px]"></div>
+            </div>
 
-            <div class="flex justify-center md:justify-start space-x-10">
+            <div class="max-w-2xl mx-auto text-center relative z-10 px-6">
+                <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">Pronto para o próximo nível?</h2>
+                <p class="text-gray-400 mb-12 text-lg">Minha agenda para o próximo mês está fechando. Vamos contar a sua história?</p>
                 
-                <!-- Ícone 1: Email --><a href="mailto:rafaela.alves@emailficticio.com" class="text-primary-neon hover:text-white transition duration-200 transform hover:scale-110 neon-glow-subtle rounded-full p-2">
-                    <i class="fas fa-envelope fa-2x"></i>
-                    <span class="sr-only">Email</span>
-                </a>
-                <!-- Ícone 2: LinkedIn --><a href="#" class="text-primary-neon hover:text-white transition duration-200 transform hover:scale-110 neon-glow-subtle rounded-full p-2">
-                    <i class="fab fa-linkedin fa-2x"></i>
-                    <span class="sr-only">LinkedIn</span>
-                </a>
-                <!-- Ícone 3: Instagram --><a href="https://www.instagram.com/eurafa.storymaker" class="text-primary-neon hover:text-white transition duration-200 transform hover:scale-110 neon-glow-subtle rounded-full p-2">
-                    <i class="fab fa-instagram fa-2x"></i>
-                    <span class="sr-only">Instagram</span>
-                </a>
-                <!-- Ícone 4: Twitter (Fictício) --><a href="#" class="text-primary-neon hover:text-white transition duration-200 transform hover:scale-110 neon-glow-subtle rounded-full p-2">
-                    <i class="fab fa-twitter fa-2x"></i>
-                    <span class="sr-only">Twitter</span>
-                </a>
+                <form class="space-y-6 text-left" action="#" method="POST" onsubmit="event.preventDefault(); alert('Obrigado! Em breve entrarei em contato.');">
+                    <div>
+                        <label class="form-label">Seu Nome</label>
+                        <input type="text" placeholder="Digite aqui..." class="form-input">
+                    </div>
+                    <div>
+                        <label class="form-label">Seu Instagram</label>
+                        <input type="text" placeholder="@seuuser" class="form-input">
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-4 rounded-lg hover:opacity-90 transition-opacity mt-4 text-lg">
+                        Solicitar Orçamento
+                    </button>
+                </form>
             </div>
         </section>
 
-
-        <!-- Rodapé --><footer class="text-center py-8 text-gray-600 text-sm mt-20">
-            <p>&copy; 2024 Rafaela Alves Storytelling. Design inspirado em UI Neon.</p>
+        <!-- Footer Minimalista (NOVO) -->
+        <footer class="py-10 border-t border-gray-900 text-gray-500 text-sm">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>&copy; 2024 Rafaela Alves. Portfolio Fictício.</p>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/eurafa.storymaker" class="hover:text-white transition-colors">Instagram</a>
+                    <a href="#" class="hover:text-white transition-colors">TikTok</a>
+                    <a href="#" class="hover:text-white transition-colors">Behance</a>
+                </div>
+            </div>
         </footer>
 
     </div>
 
-    <script>
-        
-        // JavaScript para animação de revelação de seções ao rolar
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section-reveal');
-            
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-        });
-    </script>
 </body>
 </html>
