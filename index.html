@@ -198,19 +198,22 @@
             aspect-ratio: 9 / 16;
             cursor: pointer;
             transition: transform 0.3s ease;
+            background: #000;
         }
         .story-card:hover {
             transform: translateY(-5px);
         }
-        .story-card img {
+        .story-card img, .story-card video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        .story-card:hover img {
+
+        .story-card:hover img, .story-card:hover video {
             transform: scale(1.05);
         }
+
         .story-overlay {
             position: absolute;
             inset: 0;
@@ -219,6 +222,7 @@
             flex-direction: column;
             justify-content: flex-end;
             padding: 1.25rem;
+            z-index: 10;
         }
         
         .story-badge {
@@ -335,36 +339,33 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1: Storymaker (Ícone Atualizado) -->
                 <div class="service-card group">
                     <div class="service-icon-wrapper group-hover:bg-white group-hover:text-black transition-colors duration-300">
                         <i class="fas fa-wand-magic-sparkles"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Storymaker</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Sou responsável por criar e publicar stories criativos que mostrem a rotina, produtos, eventos ou serviços da marca de forma simples e envolvente.
+                        Cobertura em tempo real de lançamentos, festas e workshops. Edição rápida para postagem imediata com qualidade de cinema.
                     </p>
                 </div>
 
-                <!-- Card 2: Social Mídia -->
                 <div class="service-card group">
                     <div class="service-icon-wrapper group-hover:bg-white group-hover:text-black transition-colors duration-300">
                         <i class="far fa-circle"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Social Mídia</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Sou responsável por planejar, criar e publicar conteúdos nas redes sociais da marca, interagir com o público e acompanhar resultados básicos, com o objetivo de aumentar a visibilidade, o engajamento e fortalecer a presença online.
+                        Criação de templates, stickers e paleta de cores exclusiva para manter seus stories consistentes e reconhecíveis.
                     </p>
                 </div>
 
-                <!-- Card 3: Videomaker -->
                 <div class="service-card group">
                     <div class="service-icon-wrapper group-hover:bg-white group-hover:text-black transition-colors duration-300">
                         <i class="fas fa-video"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white">Videomaker</h3>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        Sou responsável por gravar, editar e entregar vídeos que comuniquem a mensagem da marca de forma clara e atrativa, fortalecendo sua presença e divulgação.
+                        Produção em vídeo para eventos, unindo captação técnica, olhar estético e fluidez na entrega do conteúdo.
                     </p>
                 </div>
             </div>
@@ -381,27 +382,37 @@
                      <button class="filter-btn active">Todos</button>
                      <button class="filter-btn inactive">Lifestyle</button>
                      <button class="filter-btn inactive">Moda</button>
-                     <button class="filter-btn inactive">Gastronomia</button>
+                     <button class="filter-btn inactive">Eventos</button>
                  </div>
              </div>
 
              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                 <!-- Story 1: Casamento -->
                  <div class="story-card group">
-                     <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Café">
+                     <video 
+                        src="https://raw.githubusercontent.com/contatolucasao-netizen/portfolio-rafa/main/Casamento.mp4" 
+                        autoplay 
+                        muted 
+                        loop 
+                        playsinline 
+                        class="w-full h-full object-cover">
+                     </video>
                      <div class="story-overlay">
-                         <span class="story-badge">Gastronomia</span>
-                         <h3 class="text-white font-bold text-sm">Morning moods ☕</h3>
+                         <span class="story-badge">Eventos</span>
+                         <h3 class="text-white font-bold text-sm">Cobertura imersiva de casamentos 💍✨</h3>
                      </div>
                  </div>
 
+                 <!-- Story 2: Gloria Groove -->
                  <div class="story-card group">
-                     <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Street Style">
+                     <img src="https://raw.githubusercontent.com/contatolucasao-netizen/portfolio-rafa/main/%40gloriagroove%20%F0%9F%93%B8...%40centraldagg%20%40espacohall.jpg" alt="Gloria Groove">
                      <div class="story-overlay">
-                         <span class="story-badge">Moda</span>
-                         <h3 class="text-white font-bold text-sm">Street style de hoje. 🔥</h3>
+                         <span class="story-badge">Eventos</span>
+                         <h3 class="text-white font-bold text-sm">Gloria Groove no Espaço Hall 🎤✨</h3>
                      </div>
                  </div>
 
+                 <!-- Story 3 -->
                  <div class="story-card group">
                      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Setup Tech">
                      <div class="story-overlay">
@@ -410,11 +421,13 @@
                      </div>
                  </div>
 
+                 <!-- Story 4: Quadro Comemoração Atualizado -->
                  <div class="story-card group">
-                     <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Avião">
+                     <img src="https://raw.githubusercontent.com/contatolucasao-netizen/portfolio-rafa/main/6af11976c05faeb74cc5b46b8867dbea.jpg" alt="Chá Revelação">
                      <div class="story-overlay">
-                         <span class="story-badge">Viagem</span>
-                         <h3 class="text-white font-bold text-sm">Próxima parada ✈️</h3>
+                         <!-- Texto atualizado conforme solicitado -->
+                         <span class="story-badge">Comemoração</span>
+                         <h3 class="text-white font-bold text-sm">Chá Revelação 💙🩷</h3>
                      </div>
                  </div>
              </div>
@@ -463,4 +476,3 @@
 
 </body>
 </html>
-
