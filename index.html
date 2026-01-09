@@ -26,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* Fundo com gradientes subtis */
+        /* Fundo com gradientes sutis */
         .bg-glow-purple {
             position: absolute;
             width: 600px;
@@ -242,13 +242,24 @@
         .testimonial-card {
             background-color: var(--card-dark);
             border-radius: 1.5rem;
-            padding: 2rem;
+            padding: 2.5rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
         }
         .testimonial-card:hover {
             border-color: rgba(236, 72, 153, 0.3);
             transform: translateY(-5px);
+        }
+        .neutral-avatar {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4B5563;
         }
 
         /* --- INPUTS FORMULÁRIO --- */
@@ -319,7 +330,8 @@
                     <a href="#portfolio" class="btn-primary px-8 py-4 text-sm flex items-center justify-center gap-2">
                         Ver Stories <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="#contato" class="btn-secondary px-8 py-4 text-sm flex items-center justify-center">
+                    <!-- Novo link do WhatsApp atualizado -->
+                    <a href="https://wa.link/ppwoot" target="_blank" rel="noopener noreferrer" class="btn-secondary px-8 py-4 text-sm flex items-center justify-center">
                         Os Meus Pacotes
                     </a>
                 </div>
@@ -389,18 +401,19 @@
              <div class="flex flex-col lg:flex-row justify-between items-end mb-12 gap-6">
                  <div>
                      <h2 class="text-4xl font-black mb-2 text-white">Galeria de Stories</h2>
-                     <p class="text-gray-400">Clique para visualizar a experiência imersiva.</p>
+                     <p class="text-gray-400">Conteúdo real adaptado ao seu público.</p>
                  </div>
                  <div class="flex flex-wrap gap-3">
                      <button class="filter-btn active">Todos</button>
-                     <button class="filter-btn inactive">Lifestyle</button>
-                     <button class="filter-btn inactive">Moda</button>
-                     <button class="filter-btn inactive">Eventos</button>
+                     <button class="filter-btn inactive">Casamentos</button>
+                     <button class="filter-btn inactive">Shows</button>
+                     <button class="filter-btn inactive">Social</button>
+                     <button class="filter-btn inactive">Comemorações</button>
                  </div>
              </div>
 
              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                 <!-- Story 1: Casamento -->
+                 <!-- Quadro 1: Casamentos -->
                  <div class="story-card group">
                      <video 
                         src="https://raw.githubusercontent.com/contatolucasao-netizen/portfolio-rafa/main/Casamento.mp4" 
@@ -411,21 +424,21 @@
                         class="w-full h-full object-cover">
                      </video>
                      <div class="story-overlay">
-                         <span class="story-badge">Eventos</span>
+                         <span class="story-badge">Casamentos</span>
                          <h3 class="text-white font-bold text-sm">Cobertura imersiva de casamentos 💍✨</h3>
                      </div>
                  </div>
 
-                 <!-- Story 2: Gloria Groove -->
+                 <!-- Quadro 2: Shows -->
                  <div class="story-card group">
                      <img src="https://raw.githubusercontent.com/contatolucasao-netizen/portfolio-rafa/main/%40gloriagroove%20%F0%9F%93%B8...%40centraldagg%20%40espacohall.jpg" alt="Gloria Groove">
                      <div class="story-overlay">
-                         <span class="story-badge">Show</span>
+                         <span class="story-badge">Shows</span>
                          <h3 class="text-white font-bold text-sm">Gloria Groove no Espaço Hall 🎤✨</h3>
                      </div>
                  </div>
 
-                 <!-- Story 3: Lounge -->
+                 <!-- Quadro 3: Social -->
                  <div class="story-card group">
                      <video 
                         src="https://raw.githubusercontent.com/contatolucasao-netizen/portfolio-rafa/main/Lounge.mp4" 
@@ -436,16 +449,16 @@
                         class="w-full h-full object-cover">
                      </video>
                      <div class="story-overlay">
-                         <span class="story-badge">Espaço Social</span>
+                         <span class="story-badge">Social</span>
                          <h3 class="text-white font-bold text-sm">Ambiente e Lounge ✨</h3>
                      </div>
                  </div>
 
-                 <!-- Story 4: Chá Revelação -->
+                 <!-- Quadro 4: Comemorações -->
                  <div class="story-card group">
                      <img src="https://raw.githubusercontent.com/contatolucasao-netizen/portfolio-rafa/main/6af11976c05faeb74cc5b46b8867dbea.jpg" alt="Chá Revelação">
                      <div class="story-overlay">
-                         <span class="story-badge">Comemoração</span>
+                         <span class="story-badge">Comemorações</span>
                          <h3 class="text-white font-bold text-sm">Chá Revelação 💙🩷</h3>
                      </div>
                  </div>
@@ -460,7 +473,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Depoimento 1 -->
                 <div class="testimonial-card">
                     <div class="flex text-pink-500 mb-4">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -469,7 +481,9 @@
                         "A Rafaela tem um olhar único. Conseguiu registar o meu evento de uma forma leve e muito profissional. Recomendo imenso!"
                     </p>
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white font-bold">PS</div>
+                        <div class="neutral-avatar">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
                         <div>
                             <h4 class="text-white font-bold">Pedro Santos</h4>
                             <p class="text-gray-500 text-xs uppercase tracking-widest font-bold">Organizador de Eventos</p>
@@ -477,7 +491,6 @@
                     </div>
                 </div>
 
-                <!-- Depoimento 2: Mariana Costa (Casamento) - PARTE DO LOUNGE REMOVIDA -->
                 <div class="testimonial-card">
                     <div class="flex text-pink-500 mb-4">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -486,7 +499,9 @@
                         "Não tenho palavras para o trabalho da Rafa no meu casamento. Ela captou olhares e detalhes que nem eu percebi."
                     </p>
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white font-bold">MC</div>
+                        <div class="neutral-avatar">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
                         <div>
                             <h4 class="text-white font-bold">Mariana Costa</h4>
                             <p class="text-gray-500 text-xs uppercase tracking-widest font-bold">Noiva</p>
@@ -494,7 +509,6 @@
                     </div>
                 </div>
 
-                <!-- Depoimento 3 -->
                 <div class="testimonial-card">
                     <div class="flex text-pink-500 mb-4">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -503,7 +517,9 @@
                         "Ter a Rafa a cuidar da nossa identidade nos Stories mudou o jogo. As nossas conexões reais com os seguidores triplicaram desde que começámos a estratégia dela."
                     </p>
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white font-bold">AJ</div>
+                        <div class="neutral-avatar">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
                         <div>
                             <h4 class="text-white font-bold">Ana Julia</h4>
                             <p class="text-gray-500 text-xs uppercase tracking-widest font-bold">Influenciadora de Moda</p>
@@ -511,16 +527,17 @@
                     </div>
                 </div>
 
-                <!-- Depoimento 4 -->
                 <div class="testimonial-card">
                     <div class="flex text-pink-500 mb-4">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
                     <p class="text-gray-300 italic mb-6">
-                        "O conteúdo do meu chá revelação ficou emocionante e super moderno. Ela não apenas grava, ela realmente conta a história do momento. Vale cada cêntimo!"
+                        "O conteúdo do nosso chá revelação ficou emocionante e super moderno. Ela não apenas grava, ela realmente conta a história do momento. Vale cada cêntimo!"
                     </p>
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white font-bold">CB</div>
+                        <div class="neutral-avatar">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
                         <div>
                             <h4 class="text-white font-bold">Carla</h4>
                             <p class="text-gray-500 text-xs uppercase tracking-widest font-bold">Mãe do Chá Revelação</p>
@@ -540,19 +557,20 @@
                 <h2 class="text-3xl md:text-5xl font-black mb-4 text-white">Pronto para o próximo nível?</h2>
                 <p class="text-gray-400 mb-12 text-lg">Entre em Contacto</p>
                 
-                <form class="space-y-6 text-left" action="#" method="POST" onsubmit="event.preventDefault(); document.getElementById('success-msg').classList.remove('hidden');">
+                <!-- Formulário com o novo link do WhatsApp redirecionando no envio -->
+                <form class="space-y-6 text-left" action="https://wa.link/ppwoot" target="_blank" method="GET" onsubmit="document.getElementById('success-msg').classList.remove('hidden');">
                     <div>
                         <label class="form-label">O Seu Nome</label>
-                        <input type="text" placeholder="Escreva aqui..." class="form-input" required>
+                        <input type="text" name="text" placeholder="Escreva aqui..." class="form-input" required>
                     </div>
                     <div>
                         <label class="form-label">O Seu Instagram</label>
                         <input type="text" placeholder="@oseuuser" class="form-input" required>
                     </div>
                     <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-4 rounded-lg hover:opacity-90 transition-opacity mt-4 text-lg">
-                        Solicitar Orçamento
+                        Solicitar Orçamento via WhatsApp
                     </button>
-                    <p id="success-msg" class="hidden text-green-500 text-center font-bold mt-4">Mensagem enviada com sucesso!</p>
+                    <p id="success-msg" class="hidden text-green-500 text-center font-bold mt-4">A abrir o WhatsApp...</p>
                 </form>
             </div>
         </section>
@@ -563,7 +581,8 @@
                 <p>&copy; 2025 Rafaela Alves. Portfólio Profissional.</p>
                 <div class="flex gap-6">
                     <a href="https://www.instagram.com/eurafa.storymaker?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Instagram</a>
-                    <a href="#" class="hover:text-white transition-colors">WhatsApp</a>
+                    <!-- Novo link do WhatsApp atualizado -->
+                    <a href="https://wa.link/ppwoot" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors font-bold text-pink-500">WhatsApp</a>
                 </div>
             </div>
         </footer>
